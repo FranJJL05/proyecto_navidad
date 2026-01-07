@@ -19,11 +19,12 @@ jobs:
     # 2. Intentar construir la imagen Docker
     - name: Construir imagen Docker
       run: docker build -t tienda-ropa .
-
+      
     # 3. Comprobar que Nginx arranca (Test simple)
     - name: Test de arranque
       run: |
-        docker run -d -p 8080:80 --name test-container tienda-ropa
+        # CAMBIO AQUÍ: Mapeamos 8080 del host al 8080 del contenedor
+        docker run -d -p 8080:8080 --name test-container tienda-ropa
         sleep 5
         curl --fail http://localhost:8080
         docker stop test-container

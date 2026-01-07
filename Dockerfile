@@ -13,8 +13,8 @@ RUN chown -R nginx:nginx /usr/share/nginx/html && \
 RUN touch /var/run/nginx.pid && \
     chown -R nginx:nginx /var/run/nginx.pid
 
-# 4. SEGURIDAD: Cambiar puerto 80 a 8080 (CORREGIDO PARA QUE NO FALLE)
-# Usamos una expresión regular que traga cualquier espacio
+# 4. SEGURIDAD: Cambiar puerto 80 a 8080 (ESTA ES LA CLAVE)
+# Usamos una expresión regular que traga cualquier espacio para que no falle
 RUN sed -i 's/listen.*80;/listen 8080;/' /etc/nginx/conf.d/default.conf
 
 # 5. Cambiar a usuario seguro
