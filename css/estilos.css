@@ -1,0 +1,269 @@
+/* --- 1. VARIABLES (Requisito: Al menos 4 variables) --- */
+:root {
+    --color-primario: #2c3e50;
+    --color-secundario: #3498db;
+    --color-acento: #e74c3c;
+    --color-fondo: #f9f9f9;
+    --color-blanco: #ffffff;
+    --color-texto: #333333;
+    --sombra-suave: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+/* --- CLASES DE UTILIDAD --- */
+.oculto { display: none !important; }
+
+/* --- BOTONES --- */
+.boton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.2s; /* Animación 1 */
+}
+
+.boton:active { transform: scale(0.95); }
+
+.boton--primario { background-color: var(--color-primario); color: var(--color-blanco); }
+.boton--secundario { background-color: var(--color-secundario); color: var(--color-blanco); }
+.boton--exito { background-color: #27ae60; color: var(--color-blanco); }
+.boton--peligro { background-color: var(--color-acento); color: var(--color-blanco); }
+.boton--ancho-completo { width: 100%; margin-top: 10px; }
+
+/* --- LOGIN --- */
+.cuerpo-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+}
+
+.contenedor-login {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.formulario {
+    background: var(--color-blanco);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.formulario__titulo { text-align: center; margin-bottom: 20px; color: var(--color-primario); }
+.formulario__grupo { margin-bottom: 15px; }
+.formulario__etiqueta { display: block; margin-bottom: 5px; font-weight: bold; }
+.formulario__input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+.formulario__pie { text-align: center; margin-top: 15px; font-size: 0.9em; color: #666; }
+
+/* --- NAVEGACIÓN (BEM) --- */
+.navegacion {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navegacion__contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navegacion__logo { font-size: 1.5rem; font-weight: bold; }
+
+.navegacion__menu { display: flex; gap: 20px; align-items: center; }
+
+.navegacion__enlace { color: var(--color-blanco); text-decoration: none; transition: color 0.3s; }
+.navegacion__enlace:hover { color: var(--color-secundario); }
+
+.navegacion__boton {
+    background: none;
+    border: 1px solid var(--color-blanco);
+    color: var(--color-blanco);
+    padding: 5px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.navegacion__toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;}
+
+/* --- HEADER Y CONTROLES --- */
+.cabecera { text-align: center; padding: 2rem 1rem; }
+.controles {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+.controles__select { padding: 10px; border-radius: 5px; border: 1px solid #ddd; }
+
+/* --- GRID DE PRODUCTOS (Requisito: Layout Grid Irregular) --- */
+.contenedor-principal { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+.grid-productos {
+    display: grid;
+    /* Grid responsivo automático */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    grid-auto-flow: dense; /* Ayuda al grid irregular */
+}
+
+/* --- TARJETAS (BEM) --- */
+.tarjeta {
+    background-color: var(--color-blanco);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--sombra-suave);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animación 2 */
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Efecto Grid Irregular: Cada 5 items, el 1º ocupa 2 columnas (solo en escritorio) */
+@media (min-width: 1024px) {
+    .tarjeta:nth-child(5n + 1) {
+        grid-column: span 2;
+    }
+}
+
+.tarjeta__imagen-contenedor {
+    height: 250px;
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tarjeta__imagen {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease; /* Animación 3 */
+}
+
+.tarjeta:hover .tarjeta__imagen { transform: scale(1.1); }
+
+.tarjeta__contenido {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.tarjeta__titulo { font-size: 1rem; margin-bottom: 10px; }
+.tarjeta__precio { font-size: 1.2rem; font-weight: bold; color: var(--color-primario); margin-bottom: 10px;}
+
+/* --- MODALES --- */
+.modal {
+    display: none; /* Se activa con clase .mostrar */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s; /* Animación 4 */
+}
+
+.modal.mostrar { display: flex; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal__contenido {
+    background-color: var(--color-blanco);
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal__contenido--grande { max-width: 800px; }
+.modal__cerrar { position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer; }
+
+/* Detalle de producto en modal */
+.detalle-producto { display: flex; flex-direction: column; gap: 20px; }
+.detalle-producto img { max-width: 200px; margin: 0 auto; }
+
+/* Carrito Items */
+.item-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+.item-carrito__info h4 { font-size: 0.9rem; }
+.item-carrito__controles { display: flex; align-items: center; gap: 10px; }
+
+/* --- RESPONSIVIDAD (Media Queries) --- */
+
+/* Móvil */
+@media (max-width: 576px) {
+    .navegacion__toggle { display: block; }
+    
+    .navegacion__menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: var(--color-primario);
+        padding: 20px;
+    }
+
+    .navegacion__menu.activo { display: flex; }
+    
+    .tarjeta:nth-child(5n + 1) { grid-column: span 1; } /* Quitar irregularidad en móvil */
+    .detalle-producto { align-items: center; text-align: center; }
+}
+
+/* Tablet */
+@media (min-width: 577px) and (max-width: 1023px) {
+    .grid-productos { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Cargando */
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border-left-color: var(--color-secundario);
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.cargando { text-align: center; width: 100%; padding: 20px; }

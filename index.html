@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModaStyle - Tienda Online</title>
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <nav class="navegacion">
+        <div class="navegacion__contenedor">
+            <div class="navegacion__logo">ModaStyle</div>
+            
+            <button class="navegacion__toggle" id="menu-toggle">☰</button>
+
+            <div class="navegacion__menu" id="menu-principal">
+                <a href="#" class="navegacion__enlace">Inicio</a>
+                <a href="#catalogo" class="navegacion__enlace">Catálogo</a>
+                
+                <button id="btn-abrir-carrito" class="navegacion__boton">
+                    🛒 Carrito <span id="contador-carrito" class="navegacion__contador">0</span>
+                </button>
+                
+                <button id="btn-salir" class="navegacion__boton navegacion__boton--peligro">Salir</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="cabecera">
+        <h1 class="cabecera__titulo">Últimas Tendencias</h1>
+        
+        <div class="controles">
+            <div class="controles__grupo">
+                <label for="filtro-categoria">Categoría:</label>
+                <select id="filtro-categoria" class="controles__select">
+                    <option value="todas">Todas</option>
+                    </select>
+            </div>
+
+            <div class="controles__grupo">
+                <button id="btn-ordenar" class="boton boton--secundario">Ordenar Precio ⬆⬇</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="contenedor-principal">
+        <div id="contenedor-productos" class="grid-productos">
+            </div>
+
+        <div id="cargando" class="cargando oculto">
+            <div class="spinner"></div>
+            <p>Cargando más estilos...</p>
+        </div>
+    </main>
+
+    <div id="modal-producto" class="modal">
+        <div class="modal__contenido modal__contenido--grande">
+            <span class="modal__cerrar" id="cerrar-modal-producto">&times;</span>
+            <div id="detalle-producto-cuerpo" class="detalle-producto">
+                </div>
+        </div>
+    </div>
+
+    <div id="modal-carrito" class="modal">
+        <div class="modal__contenido">
+            <span class="modal__cerrar" id="cerrar-modal-carrito">&times;</span>
+            <h2 class="modal__titulo">Tu Cesta</h2>
+            
+            <div id="lista-carrito" class="carrito-lista">
+                </div>
+
+            <div class="carrito-resumen">
+                <p class="carrito-total">Total: <span id="precio-total">0.00 €</span></p>
+                <button id="btn-finalizar-compra" class="boton boton--exito boton--ancho-completo">Confirmar Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
