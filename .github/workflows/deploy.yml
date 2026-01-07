@@ -1,0 +1,29 @@
+name: CI Tienda Ropa (Build Docker)
+
+# ¿Cuándo se activa? Al hacer push a main o develop
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Descargar tu código
+    - name: Checkout del código
+      uses: actions/checkout@v3
+
+    # 2. Intentar construir la imagen Docker
+    - name: Construir imagen Docker
+      run: docker build -t tienda-ropa .
+
+    # 3. Comprobar que Nginx arranca (Test simple)
+    - name: Test de arranque
+      run: |
+        docker run -d -p 8080:80 --name test-container tienda-ropa
+        sleep 5
+        curl --fail http://localhost:8080
+        docker stop test-container
