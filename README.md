@@ -79,6 +79,27 @@ También he dockerizado la aplicación para facilitar su despliegue:
 
 ---
 
+## 📸 Comprobación de Funcionamiento
+
+Aquí tienes una demostración visual de las funcionalidades clave del proyecto finalizado:
+
+| **Vista Principal** | **Catálogo de Productos** |
+|:---:|:---:|
+| <img src="assets/img/screenshots/home.png" width="400" alt="Vista Principal"> | <img src="assets/img/screenshots/catalogo.png" width="400" alt="Catálogo"> |
+| *Página de inicio con productos destacados* | *Filtrado y ordenación de productos* |
+
+| **Detalle de Producto** | **Carrito de Compras** |
+|:---:|:---:|
+| <img src="assets/img/screenshots/detalle_producto.png" width="400" alt="Detalle"> | <img src="assets/img/screenshots/carrito.png" width="400" alt="Carrito"> |
+| *Modal con información extendida* | *Gestión de cesta y cálculo de total* |
+
+| **Login de Usuario** |
+|:---:|
+| <img src="assets/img/screenshots/login.png" width="400" alt="Login"> |
+| *Acceso seguro para usuarios* |
+
+---
+
 ## ☁️ Despliegue (CI/CD)
 
 El proyecto cuenta con un flujo de trabajo de **GitHub Actions** (`.github/workflows/deploy.yml`) que automatiza el despliegue:
